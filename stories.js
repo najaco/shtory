@@ -1,15 +1,7 @@
-const { spawn } = require('child_process');
-const SCRIPT_PATH = "./my_script" + Date.now()
-const script = spawn('script', ['-q', ]);
+const { execSync, spawnSync } = require('child_process');
+const SCRIPT_PATH = "my_script" + Date.now()
+// const script = execSync('script', ['-q', SCRIPT_PATH]);
+const script = spawnSync('script', ['-q', SCRIPT_PATH], {stdio: 'inherit'});
 
-// ls.stdout.on('data', (data) => {
-//   console.log(`stdout: ${data}`);
-// });
 
-// ls.stderr.on('data', (data) => {
-//   console.error(`stderr: ${data}`);
-// });
-
-ls.on('close', (code) => {
-  console.log(`child process exited with code ${code}`);
-});
+// e
