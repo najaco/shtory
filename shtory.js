@@ -1,19 +1,33 @@
-args = process.argv
+const recordSession = () => {
+  const { spawnSync } = require("child_process");
+  const SCRIPT_PATH = `${process.env.TMPDIR}/shtory_${Date.now()}`;
+  console.log(`SCRIPT LOCATION = ${SCRIPT_PATH}`);
+  const script = spawnSync("script", ["-q", SCRIPT_PATH], { stdio: "inherit" });
+  if (script.stderr) {
+    console.log(Error(spawn.stderr));
+    process.exitCode = 1;
+    return process.exitCode;
+  }
 
-if (args[2] === '-r') {
-    const { execSync, spawnSync } = require('child_process');
-    const SCRIPT_PATH = "my_script" + Date.now()
-    const script = spawnSync('script', ['-q', SCRIPT_PATH], { stdio: 'inherit' });
+};
+
+const printUsage = (args) => {
+  console.log(`${args[0]} ${args[1]} [-rlf]`);
+};
+
+if (require.main === module) {
+  args = process.argv;
+  switch (args[2]) {
+    case "-r":
+      recordSession();
+      break;
+    case "-l":
+      // TODO: IMPLEMENT -l
+      break;
+    case "-f":
+      // TODO: IMPLEMENT -f
+      break;
+    default:
+      printUsage(args);
+  }
 }
-
-if (args[2] === '-l') {
-    // TODO
-}
-
-if (args[2] === 'f') {
-    let username = args[3]
-    // TODO
-}
-
-
-
