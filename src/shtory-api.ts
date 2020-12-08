@@ -1,4 +1,4 @@
-import { shtory } from "./shorty-model"
+import { shtory } from "./shtory-model"
 
 const SERVER_URL = 'thisisaplaceholderplsupdatelateroncedeployed'
 
