@@ -5,7 +5,7 @@ export interface shtory {
     /**
      * the id of this shtory
      */
-    id: string;
+    id?: string;
     /**
      * the content of this shtory
      */
